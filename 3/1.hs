@@ -6,13 +6,13 @@ func3 :: Num a => a -> [a] -> [a]
 func4 :: Num a => a -> [a] -> [a]
 
 func x l = map (\y -> y*x) l
-{-Применим к этой функции эта-редукцию:-}
+{-Apply reduction to this function:-}
 func1 x = map (\y -> y*x)
-{-Применим к этой функции эта-редукцию:-}
+{-Apply reduction to this function:-}
 func2 x = map (*x)
-{-Теперь применим композицию между map и *:-}
+{-Now apply the composition between map and *:-}
 func3 x = (map . (*)) x
-{-Применим к этой функции эта-редукцию:-}
+{-Apply reduction to this function:-}
 func4 = map . (*)
 
 
