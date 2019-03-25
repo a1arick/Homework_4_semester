@@ -16,13 +16,13 @@ top (x:xs) = x
 f :: [Char] -> Bool
 supF :: Stack Char -> [Char] -> Bool
 f [] = True
-f str = supF [] str
+f xs = supF [] xs
 
 supF [] [] = True
 supF stack [] = False
 
-supF stack str | (head str) == '(' || head str == '{' || head str == '['     = supF (push (head str) stack) (tail str)
-               | (head str) == ')' && (not)(empty stack) && top stack == '(' = supF (pop stack) (tail str)
-               | (head str) == ']' && (not)(empty stack) && top stack == '[' = supF (pop stack) (tail str)
-               | (head str) == '}' && (not)(empty stack) && top stack == '{' = supF (pop stack) (tail str)
-               | otherwise = False
+supF stack (x:xs) | x == '(' || x == '{' || x == '['                   = supF (push x stack) xs
+                  | x == ')' && (not)(empty stack) && top stack == '(' = supF (pop stack) xs
+                  | x == ']' && (not)(empty stack) && top stack == '[' = supF (pop stack) xs
+                  | x == '}' && (not)(empty stack) && top stack == '{' = supF (pop stack) xs
+                  | otherwise = False
