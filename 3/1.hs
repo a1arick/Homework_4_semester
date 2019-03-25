@@ -15,5 +15,3 @@ func3 x = (map . (*)) x
 {-Apply reduction to this function:-}
 func4 = map . (*)
 
-
-main = print (func4 5 [1..10]) 
