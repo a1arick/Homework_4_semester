@@ -1,10 +1,10 @@
-fact :: [Integer] -> Integer
-fact l = fun 0 0 0 l l
+maxSumIndex :: [Integer] -> Integer
+supFunc :: Integer -> Integer -> Integer -> [Integer] -> Integer
+sumTempAndNext :: [Integer] -> Integer
+maxSumIndex xs = supFunc 0 0 0 xs
 
-fun :: Integer -> Integer -> Integer -> Integer -> [Integer] -> [Integer]
-fun pos maxSum temp [] l = pos
-fun pos maxSum temp tempL l | temp + (head templ) > maxSum = fun (length l - length templ) (temp + (head tempL)) (head templ) (tail templ) l
-                            | otherwise = fun pos maxSum (head templ) (tail templ) l    
+supFunc maxPos maxSum i xs | xs == [] = maxPos
+                        | sumTempAndNext xs <= maxSum = supFunc maxPos maxSum (i + 1) (tail xs)
+                        | otherwise = supFunc (i + 1) (sumTempAndNext xs) (i + 1) (tail xs)
 
-
-main = print (fact [1, 5, 6, 2]) 
+sumTempAndNext xs = if length xs == 1 then head xs else head xs + head (tail xs)
