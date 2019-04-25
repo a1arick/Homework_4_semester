@@ -1,7 +1,3 @@
-func :: [Integer] -> [Integer]
-func l = filter (\x -> cont x) l
+func :: [Integer]
 
-cont :: Integer -> Bool
-cont x | x == 0                                                 = True
-       | x `mod` 10 == 1 || x `mod` 10 == 7 ||  x `mod` 10 == 9 = cont (x `div` 10) 
-       | otherwise                                              = False 
+func = 1 : 7 : 9 : concatMap (flip (zipWith (+).repeat.(* 10)) [1, 7, 9]) func
