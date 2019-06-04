@@ -44,7 +44,6 @@ simplifyHelper (Minus a (Const 0)) = a
 simplifyHelper (Minus (Const c1) (Const c2)) = Const (c1-c2)
 simplifyHelper (Minus (Multiply (Const c1) X) (Multiply (Const c2) X)) = Multiply (Const (c1-c2)) X
 
-
 simplifyHelper (Multiply (Const 0) _) = Const 0 
 simplifyHelper (Multiply _ (Const 0)) = Const 0 
 simplifyHelper (Multiply (Const 1) b) = b 
